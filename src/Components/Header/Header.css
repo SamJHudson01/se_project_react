@@ -1,0 +1,49 @@
+.header {
+  margin-top: 32px;
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__container-left {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.header__logo {
+  width: 89px;
+  height: 40px;
+}
+
+.header__date-location {
+  margin-left: 24px;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.header__container-right {
+  display: flex;
+  align-items: center;
+}
+
+.header__add-button {
+  background: none;
+  border: none;
+  font-family: "Cabinet Grotesk Bold", Courier, monospace;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-right: 20px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.header__user {
+  font-size: 20px;
+  line-height: 1.2;
+  margin-right: 12px;
+}
