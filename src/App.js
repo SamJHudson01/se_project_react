@@ -14,7 +14,7 @@ function App() {
     weatherData.then((data) => {
       const weatherType = filterWeatherType(data);
       const cityName = data.name;
-      const temperature = data.main.temp;
+      const temperature = Math.round(data.main.temp);
       setWeatherData({ temperature, weatherType, cityName });
     });
   }, []);
@@ -25,7 +25,7 @@ function App() {
         <div className="app__content">
           <Header weatherData={weatherData.cityName} />
           {console.log(weatherData)}
-          <WeatherCard />
+          <WeatherCard temperature={weatherData.temperature} />
         </div>
       </div>
     </>
