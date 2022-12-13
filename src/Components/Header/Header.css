@@ -18,12 +18,15 @@
   height: 40px;
 }
 
-.header__date-location {
+.header__date-location-long {
   margin-left: 24px;
   font-size: 20px;
   line-height: 1.2;
   margin-top: 10px;
   margin-bottom: 0;
+}
+.header__date-location-short {
+  display: none;
 }
 
 .header__container-right {
@@ -46,4 +49,45 @@
   font-size: 20px;
   line-height: 1.2;
   margin-right: 12px;
+}
+
+@media screen and (max-width: 750px) {
+  .header__logo {
+    width: 45px;
+    height: 20px;
+  }
+
+  .header__add-button {
+    font-size: 14px;
+    line-height: 1.2;
+    margin-right: 10px;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .header__date-location-long {
+    display: none;
+  }
+
+  .header__date-location-short {
+    display: block;
+    margin-left: 10px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .header__user {
+    font-size: 14px;
+    line-height: 1.2;
+    margin-right: 10px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header__user {
+    display: none;
+  }
 }

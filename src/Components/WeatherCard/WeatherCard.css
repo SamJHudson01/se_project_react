@@ -1,9 +1,8 @@
 .weatherCard {
   max-width: 1360px;
-  margin-left: 40px;
-  margin-right: 40px;
   background: url("/Users/samuelhudson/Desktop/Practicum/se_project_react/public/images/WeatherCardBG.png")
     no-repeat;
+  background-size: 100%;
   background-color: #00a3ff;
   height: 80px;
   border-radius: 12px;
@@ -21,4 +20,11 @@
   line-height: 1.2;
   color: #ffffff;
   align-self: center;
+}
+
+@media (max-width: 1440px) {
+  .weatherCard {
+    background: none;
+    background-color: #00a3ff;
+  }
 }

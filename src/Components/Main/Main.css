@@ -1,0 +1,33 @@
+.main {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.main__info-text {
+  margin-top: 40px;
+  margin-bottom: 34px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.main__card-container {
+  display: grid;
+  grid-template-columns: 328px 328px 328px;
+  grid-gap: 17px;
+  padding: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .main__card-container {
+    grid-template-columns: 328px 328px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .main__card-container {
+    grid-template-columns: 328px;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+}
