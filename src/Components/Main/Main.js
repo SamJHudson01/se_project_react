@@ -1,6 +1,6 @@
 import React from "react";
-import WeatherCard from "../../Components/WeatherCard/WeatherCard";
-import ItemCard from "../../Components/ItemCard/ItemCard";
+import WeatherCard from "../WeatherCard/WeatherCard";
+import ItemCard from "../ItemCard/ItemCard";
 import "./Main.css";
 
 const Main = ({ temperature, clothingItems, handleCardClick }) => {
