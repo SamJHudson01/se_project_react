@@ -14,28 +14,27 @@ const Main = ({ temperature, clothingItems, handleCardClick }) => {
     }
   };
   return (
-    <>
-      <main className="main">
-        <WeatherCard temperature={temperature} />
-        <div className="main__info">
-          <p className="main__info-text">
-            {" "}
-            Today it is {temperature}°F / you may want to wear:{" "}
-          </p>
-        </div>
-        <ul className="main__card-container">
-          {clothingItems
-            .filter((item) => item.weather === weatherType())
-            .map((item) => (
-              <ItemCard
-                key={item.id}
-                clothingItem={item}
-                handleCardClick={handleCardClick}
-              />
-            ))}
-        </ul>
-      </main>
-    </>
+    <main className="main">
+      <WeatherCard temperature={temperature} />
+      <div className="main__info">
+        <p className="main__info-text">
+          {" "}
+          Today it is {temperature}°F / you may want to wear:{" "}
+        </p>
+      </div>
+      <ul className="main__card-container">
+        {clothingItems
+          .filter((item) => item.weather === weatherType())
+          .map((item) => (
+            <ItemCard
+              key={item._id}
+              clothingItem={item}
+              handleCardClick={handleCardClick}
+            />
+          ))}
+        {console.log(clothingItems)}
+      </ul>
+    </main>
   );
 };
 

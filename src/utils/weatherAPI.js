@@ -10,7 +10,7 @@ export function getWeatherData(latitude, longitude, APIkey) {
 }
 
 export function filterWeatherType(weatherData) {
-  var weatherType = null;
+  let weatherType = null;
   if (weatherData.main.temp > 70) {
     weatherType = "hot";
   } else if (weatherData.main.temp > 50) {

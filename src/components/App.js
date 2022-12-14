@@ -17,7 +17,7 @@ import { Footer } from "./Footer/Footer";
 function App() {
   const [weatherData, setWeatherData] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
-  const [activeModal, setActiveModal] = useState();
+  const [activeModal, setActiveModal] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
 
   useEffect(() => {
@@ -44,88 +44,86 @@ function App() {
   }, []);
 
   useEffect(() => {
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        closeAllModals();
+      }
+    }
+
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
 
-  function handleKeyDown(event) {
-    if (event.key === "Escape") {
-      closeAllModals();
-    }
-  }
-
   const closeAllModals = () => {
     setActiveModal(null);
   };
 
   return (
-    <>
-      <div className="app">
-        <div className="app__content">
-          <Header
-            weatherData={weatherData.cityName}
-            handleAddItem={() => setActiveModal("add-item")}
-          />
-          <Main
-            temperature={weatherData.temperature}
-            clothingItems={clothingItems}
-            handleCardClick={handleCardClick}
-          />
-          <Footer />
-          {activeModal === "add-item" && (
-            <ModalWithForm
-              name="add-garment-modal"
-              title="New garment"
-              buttonText="Add Garment"
-              close={closeAllModals}
-            >
-              <p className="modal__input-label">Name</p>
-              <input
-                type="text"
-                id="owner-name"
-                name="name"
-                className="modal__input"
-                placeholder="Name"
-                required
-              />
-              <p className="modal__input-label">Image</p>
-              <input
-                type="url"
-                id="owner-name"
-                name="name"
-                className="modal__input"
-                placeholder="Image URL"
-                required
-              />
+    <div className="app">
+      <div className="app__content">
+        <Header
+          weatherData={weatherData.cityName}
+          handleAddItem={() => setActiveModal("add-item")}
+        />
+        <Main
+          temperature={weatherData.temperature}
+          clothingItems={clothingItems}
+          handleCardClick={handleCardClick}
+        />
+        <Footer />
+        {activeModal === "add-item" && (
+          <ModalWithForm
+            name="add-garment-modal"
+            title="New garment"
+            buttonText="Add Garment"
+            close={closeAllModals}
+          >
+            <p className="modal__input-label">Name</p>
+            <input
+              type="text"
+              id="owner-name"
+              name="name"
+              className="modal__input"
+              placeholder="Name"
+              required
+            />
+            <p className="modal__input-label">Image</p>
+            <input
+              type="url"
+              id="owner-name"
+              name="name"
+              className="modal__input"
+              placeholder="Image URL"
+              required
+            />
 
-              <p className="modal__input-label">Name</p>
-              <div className="modal__radio-container">
-                <label className="modal__radio-label">
-                  <input type="radio" name="radio-buttons" />
-                  <div className="circle"></div>
-                  <span className="modal__radio-item-text">Hot</span>
-                </label>
-                <label className="modal__radio-label">
-                  <input type="radio" name="radio-buttons" />
-                  <div className="circle"></div>
-                  <span className="modal__radio-item-text">Warm</span>
-                </label>
-                <label className="modal__radio-label">
-                  <input type="radio" name="radio-buttons" />
-                  <div className="circle"></div>
-                  <span className="modal__radio-item-text">Cold</span>
-                </label>
-              </div>
-            </ModalWithForm>
-          )}
-          {activeModal === "preview" && (
-            <ItemModal clothingItem={selectedCard} close={closeAllModals} />
-          )}
-        </div>
+            <p className="modal__input-label">Name</p>
+            <div className="modal__radio-container">
+              <label className="modal__radio-label">
+                <input type="radio" name="radio-buttons" />
+                <div className="circle"></div>
+                <span className="modal__radio-item-text">Hot</span>
+              </label>
+              <label className="modal__radio-label">
+                <input type="radio" name="radio-buttons" />
+                <div className="circle"></div>
+                <span className="modal__radio-item-text">Warm</span>
+              </label>
+              <label className="modal__radio-label">
+                <input type="radio" name="radio-buttons" />
+                <div className="circle"></div>
+                <span className="modal__radio-item-text">Cold</span>
+              </label>
+            </div>
+          </ModalWithForm>
+        )}
+        {activeModal === "preview" && (
+          <ItemModal clothingItem={selectedCard} close={closeAllModals} />
+        )}
       </div>
-    </>
+    </div>
   );
 }
 
