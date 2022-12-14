@@ -1,18 +1,18 @@
-import "././Vendor/normalize.css";
+import "../Vendor/normalize.css";
 import "./App.css";
-import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
-import ItemModal from "./components/ItemModal/ItemModal";
-import ModalWithForm from "./components/ModalWithForm/ModalWithForm";
-import { getWeatherData, filterWeatherType } from "./utils/weatherAPI";
+import Header from "./Header/Header";
+import Main from "./Main/Main";
+import ItemModal from "./ItemModal/ItemModal";
+import ModalWithForm from "./ModalWithForm/ModalWithForm";
+import { getWeatherData, filterWeatherType } from "../utils/weatherAPI";
 import {
   longitude,
   latitude,
   APIkey,
   defaultClothingItems,
-} from "./utils/constants";
+} from "../utils/constants";
 import { useEffect, useState } from "react";
-import { Footer } from "./components/Footer/Footer";
+import { Footer } from "./Footer/Footer";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});

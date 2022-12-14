@@ -1,7 +1,6 @@
 .weatherCard {
   max-width: 1360px;
-  background: url("/Users/samuelhudson/Desktop/Practicum/se_project_react/src/images/WeatherCardBG.png")
-    no-repeat;
+  background: url("../../images/WeatherCardBG.png") no-repeat;
   background-size: 100%;
   background-color: #00a3ff;
   height: 80px;
