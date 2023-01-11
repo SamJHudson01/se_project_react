@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import logoPath from "../../images/logo.svg";
 import avatarPath from "../../images/avatar-image.png";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
 const Header = ({ weatherData, handleAddItem }) => {
   const currentDateLong = new Date().toLocaleString("default", {
@@ -24,6 +25,7 @@ const Header = ({ weatherData, handleAddItem }) => {
         <p className="header__date-location-short">{`${currentDateShort}, ${weatherData}`}</p>
       </div>
       <div className="header__container-right">
+        <ToggleSwitch />
         <button className="header__add-button" onClick={handleAddItem}>
           + Add Clothes
         </button>
