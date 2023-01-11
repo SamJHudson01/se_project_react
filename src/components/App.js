@@ -31,6 +31,10 @@ function App() {
     setActiveModal("preview");
   };
 
+  const handleToggleSwitchChange = (e) => {
+    setCurrentTemperatureUnit(e.target.checked ? "C" : "F");
+  };
+
   useEffect(() => {
     const weatherData = getWeatherData(latitude, longitude, APIkey);
     weatherData

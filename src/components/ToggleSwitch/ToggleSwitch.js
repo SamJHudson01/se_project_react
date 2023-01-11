@@ -1,9 +1,13 @@
+import React, { useState, useContext } from "react";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+
 const ToggleSwitch = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const context = useContext(CurrentTemperatureUnitContext);
 
   const handleChange = (event) => {
     setIsChecked(event.target.checked);
-    context.handleToggleSwitchChange();
+    context.handleToggleSwitchChange(event);
   };
 
   return (
