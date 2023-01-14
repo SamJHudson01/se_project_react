@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import "./Main.css";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-const Main = ({ temperature, clothingItems, handleCardClick }) => {
+const Main = ({
+  temperatureF,
+  temperatureC,
+  clothingItems,
+  handleCardClick,
+}) => {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
   const weatherType = () => {
+    const temperature = temperatureF;
+
     if (temperature >= 86) {
       return "hot";
     } else if (temperature >= 66) {
@@ -13,13 +23,20 @@ const Main = ({ temperature, clothingItems, handleCardClick }) => {
       return "cold";
     }
   };
+
   return (
     <main className="main">
-      <WeatherCard temperature={temperature} />
+      <WeatherCard
+        temperatureF={temperatureF}
+        temperatureC={temperatureC}
+        currentTemperatureUnit={currentTemperatureUnit}
+      />
       <div className="main__info">
         <p className="main__info-text">
           {" "}
-          Today it is {temperature}°F / you may want to wear:{" "}
+          Today it is{" "}
+          {currentTemperatureUnit === "F" ? temperatureF : temperatureC}°
+          {currentTemperatureUnit} / you may want to wear:{" "}
         </p>
       </div>
       <ul className="main__card-container">
@@ -32,7 +49,6 @@ const Main = ({ temperature, clothingItems, handleCardClick }) => {
               handleCardClick={handleCardClick}
             />
           ))}
-        {console.log(clothingItems)}
       </ul>
     </main>
   );
