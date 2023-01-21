@@ -1,7 +1,7 @@
 import React from "react";
 import "./ItemModal.css";
 
-const ItemModal = ({ clothingItem, close }) => {
+const ItemModal = ({ clothingItem, close, deleteItem }) => {
   return (
     <div className="item-modal">
       <div className="item-modal__overlay" onClick={close}>
@@ -17,7 +17,7 @@ const ItemModal = ({ clothingItem, close }) => {
           <div
             className="item-modal__image"
             style={{
-              backgroundImage: `url(${clothingItem.link})`,
+              backgroundImage: `url(${clothingItem.imageUrl})`,
               backgroundSize: "cover",
             }}
           ></div>
@@ -26,6 +26,12 @@ const ItemModal = ({ clothingItem, close }) => {
             <p className="item-modal__weather-type">
               Weather: {clothingItem.weather}
             </p>
+            <button
+              className="item-modal__delete"
+              onClick={() => deleteItem(clothingItem.id)}
+            >
+              Delete item
+            </button>
           </div>
         </div>
       </div>

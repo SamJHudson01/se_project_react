@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./Profile.css";
-import Sidebar from "./Sidebar";
-import ClothesSection from "./ClothesSection";
+import Sidebar from "../Sidebar/Sidebar";
+import ClothesSection from "../ClothesSection/ClothesSection";
+import { ClothingItemsContext } from "../../contexts/ClothingItemsContext";
 
-const Profile = () => {
-  const [clothingItems, setClothingItems] = useState([]);
+const Profile = ({ handleCardClick, handleAddItem }) => {
+  const { clothingItems } = useContext(ClothingItemsContext);
 
   return (
     <div className="profile">
       <Sidebar />
-      <ClothesSection clothingItems={clothingItems} />
+      <ClothesSection
+        clothingItems={clothingItems}
+        handleCardClick={handleCardClick}
+        handleAddItem={handleAddItem}
+      />
     </div>
   );
 };

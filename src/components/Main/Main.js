@@ -3,14 +3,11 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import "./Main.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { ClothingItemsContext } from "../../contexts/ClothingItemsContext";
 
-const Main = ({
-  temperatureF,
-  temperatureC,
-  clothingItems,
-  handleCardClick,
-}) => {
+const Main = ({ temperatureF, temperatureC, handleCardClick }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const { clothingItems } = useContext(ClothingItemsContext);
 
   const weatherType = () => {
     const temperature = temperatureF;

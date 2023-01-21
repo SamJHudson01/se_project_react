@@ -7,7 +7,8 @@ const ItemCard = ({ clothingItem, handleCardClick }) => {
       className="itemCard"
       onClick={() => handleCardClick(clothingItem)}
       style={{
-        backgroundImage: `url(${clothingItem.link})`,
+        backgroundImage: `url(${clothingItem.imageUrl})`,
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="itemCard__title-container">

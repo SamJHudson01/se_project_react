@@ -1,0 +1,40 @@
+.clothes-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 43px;
+  margin-right: 40px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.clothes-section__text-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: auto;
+}
+
+.clothes-section__title {
+  font-size: 20px;
+  margin-left: 0;
+  margin-right: 20px;
+}
+
+.clothes-section__add-button {
+  background: none;
+  border: none;
+  font-family: "Cabinet Grotesk Bold", Courier, monospace;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-right: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 0;
+  cursor: pointer;
+}
+
+.clothes-section__grid {
+  display: grid;
+  grid-template-columns: 328px 328px 328px;
+  grid-gap: 17px;
+  padding: 0;
+}

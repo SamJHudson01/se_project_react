@@ -1,21 +1,32 @@
 import React from "react";
 import "./ModalWithForm.css";
 
-const ModalWithForm = (props) => {
+const ModalWithForm = ({
+  name,
+  title,
+  isOpen,
+  onCloseModal,
+  onSubmit,
+  children,
+}) => {
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <div className="modal">
-      <div className="modal__overlay" onClick={props.close}>
+      <div className="modal__overlay" onClick={onCloseModal}>
         <div className="modal__container" onClick={(e) => e.stopPropagation()}>
           <button
             className="modal__close-button"
             type="button"
-            onClick={props.close}
+            onClick={onCloseModal}
           ></button>
-          <form name={props.name} className="modal__form" id={props.name}>
-            <p className="modal__form-title">{props.title}</p>
-            {props.children}
-            <button className="modal__form-submit-button" type="submit">
-              {props.buttonText}
+          <form name={name} className="modal__form" onSubmit={onSubmit}>
+            <h2 className="modal__title">{title}</h2>
+            {children}
+            <button className="modal__submit-button" type="submit">
+              Submit
             </button>
           </form>
         </div>

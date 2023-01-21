@@ -45,10 +45,17 @@
   cursor: pointer;
 }
 
+.header__user-info {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 .header__user {
   font-size: 20px;
   line-height: 1.2;
   margin-right: 12px;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 750px) {
