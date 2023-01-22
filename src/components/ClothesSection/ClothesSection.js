@@ -18,7 +18,7 @@ const ClothesSection = ({ clothingItems, handleCardClick, handleAddItem }) => {
       <div className="clothes-section__grid">
         {items.map((item) => (
           <ItemCard
-            key={item._id}
+            key={item.id}
             clothingItem={item}
             handleCardClick={handleCardClick}
           />

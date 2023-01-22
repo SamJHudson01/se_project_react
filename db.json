@@ -7,18 +7,6 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2"
     },
     {
-      "id": 1,
-      "name": "Boot",
-      "weather": "cold",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Boot.png?etag=0953a2ea59f1c6ebc832fabacdc9c70e"
-    },
-    {
-      "id": 2,
-      "name": "Cap",
-      "weather": "hot",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591"
-    },
-    {
       "id": 3,
       "name": "Coat",
       "weather": "cold",
@@ -40,7 +28,7 @@
       "name": "Jacket",
       "weather": "cold",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Jacket.png?etag=f4bb188deaa25ac84ce2338be2d404ad",
-      "id": 6
+      "id": 18
     },
     {
       "name": "Jeans",
@@ -73,12 +61,6 @@
       "id": 12
     },
     {
-      "name": "Sneakers",
-      "weather": "warm",
-      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sneakers.png?etag=3efeec41c1c78b8afe26859ca7fa7b6f",
-      "id": 13
-    },
-    {
       "name": "Sunglasses",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Sunglasses.png?etag=a1bced9e331d36cb278c45df51150432",
@@ -89,12 +71,6 @@
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
       "id": 16
-    },
-    {
-      "name": "Sam",
-      "imageUrl": "https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/445000/item/goods_27_445000.jpg?width=1083&impolicy=quality_60&imformat=chrome",
-      "weather": "warm",
-      "id": 17
     }
   ]
 }

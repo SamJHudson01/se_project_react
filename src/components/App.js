@@ -7,12 +7,7 @@ import AddItemModal from "./AddItemModal/AddItemModal";
 import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext";
 import { ClothingItemsContext } from "../contexts/ClothingItemsContext";
 import { getWeatherData, filterWeatherType } from "../utils/weatherAPI";
-import {
-  longitude,
-  latitude,
-  APIkey,
-  defaultClothingItems,
-} from "../utils/constants";
+import { longitude, latitude, APIkey } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./Footer/Footer";
@@ -45,7 +40,9 @@ function App() {
         closeAllModals();
         setClothingItems([data, ...clothingItems]);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleDeleteItem = (id) => {
@@ -53,9 +50,12 @@ function App() {
       .then(() => {
         const updatedItems = clothingItems.filter((item) => item.id !== id);
         setClothingItems(updatedItems);
+
+        closeAllModals();
       })
-      .catch((error) => console.log(error));
-    closeAllModals();
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -128,7 +128,9 @@ function App() {
                     <Profile
                       clothingItems={clothingItems}
                       handleCardClick={handleCardClick}
-                      handleAddItem={() => setActiveModal("add-item")}
+                      handleAddItem={() => {
+                        setActiveModal("add-item");
+                      }}
                     />
                   }
                 />

@@ -41,7 +41,7 @@ const Main = ({ temperatureF, temperatureC, handleCardClick }) => {
           .filter((item) => item.weather === weatherType())
           .map((item) => (
             <ItemCard
-              key={item._id}
+              key={item.id}
               clothingItem={item}
               handleCardClick={handleCardClick}
             />
