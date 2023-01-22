@@ -22,7 +22,11 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   useEffect(() => {
-    getItems().then((data) => setClothingItems(data));
+    getItems()
+      .then((data) => setClothingItems(data))
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   const handleCardClick = (card) => {
