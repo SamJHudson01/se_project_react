@@ -13,6 +13,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Footer } from "./Footer/Footer";
 import Profile from "./Profile/Profile";
 import { getItems, addItem, deleteItem } from "../utils/api";
+import { register, authorize } from "../utils/auth";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -37,6 +39,9 @@ function App() {
   function handleToggleSwitchChange(event) {
     setCurrentTemperatureUnit(event.target.checked ? "C" : "F");
   }
+
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [token, setToken] = useState(null);
 
   const handleAddItemSubmit = (item) => {
     addItem(item)
