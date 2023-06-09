@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ItemModal.css";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemModal = ({ clothingItem, close, deleteItem }) => {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = clothingItem.owner._id === currentUser._id;
+  const itemDeleteButtonClassName = `item-modal__delete ${
+    isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
+  }`;
+
   return (
     <div className="item-modal">
       <div className="item-modal__overlay" onClick={close}>
@@ -27,7 +34,7 @@ const ItemModal = ({ clothingItem, close, deleteItem }) => {
               Weather: {clothingItem.weather}
             </p>
             <button
-              className="item-modal__delete"
+              className={itemDeleteButtonClassName}
               onClick={() => deleteItem(clothingItem.id)}
             >
               Delete item

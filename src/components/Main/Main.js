@@ -5,9 +5,15 @@ import "./Main.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { ClothingItemsContext } from "../../contexts/ClothingItemsContext";
 
-const Main = ({ temperatureF, temperatureC, handleCardClick }) => {
+const Main = ({
+  temperatureF,
+  temperatureC,
+  handleCardClick,
+  handleLikeClick,
+}) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const { clothingItems } = useContext(ClothingItemsContext);
+  console.log(clothingItems);
 
   const weatherType = () => {
     const temperature = temperatureF;
@@ -38,12 +44,13 @@ const Main = ({ temperatureF, temperatureC, handleCardClick }) => {
       </div>
       <ul className="main__card-container">
         {clothingItems
-          .filter((item) => item.weather === weatherType())
+          ?.filter((item) => item.weather === weatherType())
           .map((item) => (
             <ItemCard
-              key={item.id}
+              key={item._id}
               clothingItem={item}
               handleCardClick={handleCardClick}
+              handleLikeClick={handleLikeClick}
             />
           ))}
       </ul>

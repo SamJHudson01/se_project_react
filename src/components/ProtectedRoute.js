@@ -1,11 +1,16 @@
-import { Navigate, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-function ProtectedRoute({ element: Component, loggedIn, ...rest }) {
-  return loggedIn ? (
-    <Route {...rest} element={Component} />
-  ) : (
-    <Navigate to="/login" replace />
-  );
+function ProtectedRoute({ children, loggedIn }) {
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate("/");
+    }
+  }, [loggedIn, navigate]);
+
+  return loggedIn ? children : null;
 }
 
 export default ProtectedRoute;

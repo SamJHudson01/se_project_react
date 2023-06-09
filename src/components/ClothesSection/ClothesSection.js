@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const ClothesSection = ({ clothingItems, handleCardClick, handleAddItem }) => {
+const ClothesSection = ({
+  clothingItems,
+  handleCardClick,
+  handleAddItem,
+  handleLikeClick,
+}) => {
+  const currentUser = useContext(CurrentUserContext);
   const items = Array.isArray(clothingItems)
     ? clothingItems
     : Array.from(clothingItems);
+
+  const userClothingItems = items.filter(
+    (item) => item.owner._id === currentUser._id
+  );
 
   return (
     <div className="clothes-section">
@@ -16,11 +27,12 @@ const ClothesSection = ({ clothingItems, handleCardClick, handleAddItem }) => {
         </button>
       </div>
       <div className="clothes-section__grid">
-        {items.map((item) => (
+        {userClothingItems.map((item) => (
           <ItemCard
-            key={item.id}
+            key={item._id}
             clothingItem={item}
             handleCardClick={handleCardClick}
+            handleLikeClick={handleLikeClick} // make sure you pass the correct function
           />
         ))}
       </div>

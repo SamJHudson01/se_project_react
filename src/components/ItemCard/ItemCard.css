@@ -6,9 +6,13 @@
   background-size: contain;
 }
 
+.itemCard__title-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .itemCard__title-container {
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 0;
   width: fit-content;
   height: 24px;
@@ -28,4 +32,30 @@
   font-size: 16px;
   vertical-align: middle;
   margin-top: 5px;
+}
+
+.itemCard__like-button {
+  all: unset;
+  outline: none;
+  background-image: url("../../images/heart_unfilled.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 18px;
+  height: 15px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.itemCard__like-button_liked {
+  all: unset;
+  outline: none;
+  background-image: url("../../images/heart_filled.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 18px;
+  height: 15px;
+  cursor: pointer;
+  margin-left: 10px;
 }

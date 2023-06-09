@@ -74,6 +74,10 @@
   background: none;
 }
 
+.item__delete-button_hidden {
+  display: none;
+}
+
 @media screen and (max-width: 550px) {
   .item-modal__container {
     width: 350px;

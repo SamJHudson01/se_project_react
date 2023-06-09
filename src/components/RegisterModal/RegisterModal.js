@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ModalWithForm from "./ModalWithForm";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function RegisterModal({ isOpen, onClose }) {
+function RegisterModal({ isOpen, onClose, handleRegister }) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState("");
   const [email, setEmail] = useState("");
@@ -10,6 +10,7 @@ function RegisterModal({ isOpen, onClose }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(name, avatar, email, password);
+    handleRegister({ name, avatar, email, password });
   };
 
   return (
