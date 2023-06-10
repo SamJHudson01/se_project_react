@@ -7,12 +7,14 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const Header = ({ weatherData, handleAddItem }) => {
+const Header = ({ weatherData, handleAddItem, handleSignUp, handleLogin }) => {
   const currentUser = useContext(CurrentUserContext);
   const currentDateLong = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
+  console.log("Current user Header.js:", currentUser);
 
   const currentDateShort = new Date().toLocaleString("default", {
     month: "short",
@@ -52,8 +54,12 @@ const Header = ({ weatherData, handleAddItem }) => {
           </Link>
         ) : (
           <>
-            <button className="header__sign-up">Sign Up</button>
-            <button className="header__log-in">Log In</button>
+            <button className="header__sign-up" onClick={handleSignUp}>
+              Sign Up
+            </button>
+            <button className="header__log-in" onClick={handleLogin}>
+              Log In
+            </button>
           </>
         )}
       </div>

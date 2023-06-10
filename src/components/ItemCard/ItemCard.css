@@ -4,6 +4,7 @@
   height: 328px;
   width: 328px;
   background-size: contain;
+  box-sizing: border-box;
 }
 
 .itemCard__title-box {

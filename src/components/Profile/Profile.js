@@ -9,12 +9,13 @@ const Profile = ({
   handleAddItem,
   handleLikeClick,
   onSignOut,
+  onEditProfile,
 }) => {
   const { clothingItems } = useContext(ClothingItemsContext);
 
   return (
     <div className="profile">
-      <Sidebar onSignOut={onSignOut} />
+      <Sidebar onSignOut={onSignOut} onEditProfile={onEditProfile} />
       <ClothesSection
         clothingItems={clothingItems}
         handleCardClick={handleCardClick}

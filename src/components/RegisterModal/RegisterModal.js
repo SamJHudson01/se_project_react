@@ -9,7 +9,6 @@ function RegisterModal({ isOpen, onClose, handleRegister }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name, avatar, email, password);
     handleRegister({ name, avatar, email, password });
   };
 
@@ -21,32 +20,40 @@ function RegisterModal({ isOpen, onClose, handleRegister }) {
       onCloseModal={onClose}
       onSubmit={handleSubmit}
     >
+      <p className="modal__input-label">Name</p>
       <input
         type="text"
         name="name"
         value={name}
         placeholder="Name"
+        className="modal__input"
         onChange={(e) => setName(e.target.value)}
       />
+      <p className="modal__input-label">Avatar URL</p>
       <input
         type="text"
         name="avatar"
         value={avatar}
         placeholder="Avatar URL"
+        className="modal__input"
         onChange={(e) => setAvatar(e.target.value)}
       />
+      <p className="modal__input-label">Email</p>
       <input
         type="email"
         name="email"
         value={email}
         placeholder="Email"
+        className="modal__input"
         onChange={(e) => setEmail(e.target.value)}
       />
+      <p className="modal__input-label">Password</p>
       <input
         type="password"
         name="password"
         value={password}
         placeholder="Password"
+        className="modal__input"
         onChange={(e) => setPassword(e.target.value)}
       />
     </ModalWithForm>

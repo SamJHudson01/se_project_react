@@ -34,9 +34,9 @@ function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  const [isLoggedIn, setIsLoggedIn] = useState(true); // CHANGE BACK TO FALSE
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(null);
-  const [currentUser, setCurrentUser] = useState(testUser);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     getItems()
@@ -230,6 +230,8 @@ function App() {
       });
   };
 
+  console.log("Current user App.js:", currentUser);
+
   return (
     <BrowserRouter>
       <CurrentUserContext.Provider value={currentUser}>
@@ -244,6 +246,8 @@ function App() {
                 <Header
                   weatherData={weatherData.cityName}
                   handleAddItem={() => setActiveModal("add-item")}
+                  handleSignUp={() => setActiveModal("register")}
+                  handleLogin={() => setActiveModal("login")}
                 />
                 <Routes>
                   <Route
@@ -266,6 +270,7 @@ function App() {
                           handleLikeClick={handleLikeClick}
                           handleCardClick={handleCardClick}
                           onSignOut={handleSignOut}
+                          onEditProfile={() => setActiveModal("edit-profile")}
                         />
                       </ProtectedRoute>
                     }
@@ -304,7 +309,7 @@ function App() {
                 {activeModal === "edit-profile" && (
                   <EditProfileModal
                     isOpen={activeModal === "edit-profile"}
-                    onClose={closeAllModals}
+                    onCloseModal={closeAllModals}
                     onEditProfile={handleEditProfile}
                   />
                 )}

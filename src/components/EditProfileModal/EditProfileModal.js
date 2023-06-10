@@ -1,11 +1,20 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const EditProfileModal = ({ isOpen, onCloseModal, handleProfileUpdate }) => {
-  const { currentUser } = useContext(CurrentUserContext);
-  const [name, setName] = useState(currentUser.name);
-  const [avatar, setAvatar] = useState(currentUser.avatar);
+  const currentUser = useContext(CurrentUserContext);
+  const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState("");
+
+  useEffect(() => {
+    if (currentUser && isOpen) {
+      setName(currentUser.name);
+      setAvatar(currentUser.avatar);
+    }
+  }, [currentUser, isOpen]);
+
+  console.log("Current user EditModal.js:", currentUser);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,26 +29,28 @@ const EditProfileModal = ({ isOpen, onCloseModal, handleProfileUpdate }) => {
       onCloseModal={onCloseModal}
       onSubmit={handleSubmit}
     >
-      <label className="modal__input-label">
-        Your Name
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="modal__input"
-          placeholder="Your name"
-        />
-      </label>
-      <label className="modal__input-label">
-        Avatar URL
-        <input
-          type="text"
-          value={avatar}
-          onChange={(e) => setAvatar(e.target.value)}
-          className="modal__input"
-          placeholder="Avatar URL"
-        />
-      </label>
+      <p className="modal__input-label">Your Name</p>
+      <input
+        type="text"
+        id="user-name"
+        name="name"
+        className="modal__input"
+        placeholder="Your name"
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+        required
+      />
+      <p className="modal__input-label">Avatar URL</p>
+      <input
+        type="url"
+        id="user-avatar-url"
+        name="avatar"
+        className="modal__input"
+        placeholder="Avatar URL"
+        onChange={(e) => setAvatar(e.target.value)}
+        value={avatar}
+        required
+      />
     </ModalWithForm>
   );
 };
