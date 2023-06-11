@@ -14,8 +14,6 @@ const Header = ({ weatherData, handleAddItem, handleSignUp, handleLogin }) => {
     day: "numeric",
   });
 
-  console.log("Current user Header.js:", currentUser);
-
   const currentDateShort = new Date().toLocaleString("default", {
     month: "short",
     day: "numeric",

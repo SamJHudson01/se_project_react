@@ -13,7 +13,6 @@ const Main = ({
 }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const { clothingItems } = useContext(ClothingItemsContext);
-  console.log(clothingItems);
 
   const weatherType = () => {
     const temperature = temperatureF;

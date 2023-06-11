@@ -156,7 +156,6 @@ function App() {
         const cityName = data.name;
         const temperatureF = Math.round(data.main.temp);
         const temperatureC = Math.round(((data.main.temp - 32) * 5) / 9);
-        console.log(temperatureC);
         setWeatherData({
           temperatureF,
           temperatureC,
@@ -192,6 +191,7 @@ function App() {
         if (res.userId) {
           console.log("Registration successful");
           return authorize({ email, password });
+          console.log(res);
         } else {
           console.error("Registration failed");
           // display error to user
@@ -200,6 +200,8 @@ function App() {
       .then((res) => {
         if (res.token) {
           console.log("Login successful");
+          localStorage.setItem("jwt", res.token);
+          console.log(res);
           setIsLoggedIn(true);
           closeAllModals();
         } else {
@@ -218,7 +220,10 @@ function App() {
         if (res.token) {
           console.log("Login successful");
           setIsLoggedIn(true);
+
           localStorage.setItem("jwt", res.token);
+          console.log("Token: " + res.token);
+
           closeAllModals();
         } else {
           console.error("Login failed");
@@ -229,8 +234,6 @@ function App() {
         console.error(error);
       });
   };
-
-  console.log("Current user App.js:", currentUser);
 
   return (
     <BrowserRouter>

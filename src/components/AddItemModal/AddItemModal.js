@@ -21,7 +21,6 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
     e.preventDefault();
     const item = { name: name, imageUrl: imageUrl, weather: weather };
     onAddItem(item);
-    console.log(item);
   }
 
   return (

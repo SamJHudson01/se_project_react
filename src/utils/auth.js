@@ -1,29 +1,38 @@
+const baseUrl = "http://localhost:3001";
+
+function checkResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Error: ${res.status}`);
+}
+
 export const register = ({ name, avatar, email, password }) => {
-  return fetch("http://localhost:3001/signup", {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar, email, password }),
-  }).then((res) => res.json());
+  }).then(checkResponse);
 };
 
 export const authorize = ({ email, password }) => {
-  return fetch("http://localhost:3001/signin", {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password }),
-  }).then((res) => res.json());
+  }).then(checkResponse);
 };
 
 export const checkToken = (token) => {
-  return fetch("http://localhost:3001/user/me", {
+  return fetch(`${baseUrl}/user/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then((res) => res.json());
+  }).then(checkResponse);
 };

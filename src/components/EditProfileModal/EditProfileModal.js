@@ -14,8 +14,6 @@ const EditProfileModal = ({ isOpen, onCloseModal, handleProfileUpdate }) => {
     }
   }, [currentUser, isOpen]);
 
-  console.log("Current user EditModal.js:", currentUser);
-
   const handleSubmit = (event) => {
     event.preventDefault();
     handleProfileUpdate({ name, avatar });

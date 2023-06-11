@@ -4,9 +4,10 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ clothingItem, handleCardClick, handleLikeClick }) => {
   const currentUser = useContext(CurrentUserContext);
-  const isLiked = clothingItem.likes.some(
-    (user) => user._id === currentUser._id
-  );
+  const isLiked =
+    currentUser &&
+    clothingItem.likes.some((user) => user._id === currentUser._id);
+
   const itemLikeButtonClassName = `itemCard__like-button ${
     isLiked ? "itemCard__like-button_liked" : ""
   }`;
