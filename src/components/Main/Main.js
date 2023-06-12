@@ -4,6 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./Main.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { ClothingItemsContext } from "../../contexts/ClothingItemsContext";
+import { defaultClothingItems } from "../../utils/constants";
 
 const Main = ({
   temperatureF,
@@ -12,7 +13,8 @@ const Main = ({
   handleLikeClick,
 }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  const { clothingItems } = useContext(ClothingItemsContext);
+  // const { clothingItems } = useContext(ClothingItemsContext);
+  const clothingItems = defaultClothingItems;
 
   const weatherType = () => {
     const temperature = temperatureF;

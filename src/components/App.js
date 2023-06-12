@@ -37,6 +37,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getItems()
@@ -100,7 +101,6 @@ function App() {
         .then(() => {
           const updatedItems = clothingItems.filter((item) => item.id !== id);
           setClothingItems(updatedItems);
-
           closeAllModals();
         })
         .catch((error) => {
@@ -134,15 +134,18 @@ function App() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("jwt");
+
+    console.log("Token from local storage:", token); // Debug line
 
     if (token) {
       checkToken(token).then((response) => {
         if (response.error) {
           console.error("Error validating token:", response.error);
         } else {
-          console.log("Token is valid:", response);
           setToken(token);
+          setIsLoggedIn(true);
+          setCurrentUser(response);
         }
       });
     }
@@ -183,6 +186,7 @@ function App() {
 
   const closeAllModals = () => {
     setActiveModal(null);
+    console.log(isLoggedIn);
   };
 
   const handleRegister = ({ name, avatar, email, password }) => {
@@ -215,15 +219,12 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
-    authorize({ email, password })
+    return authorize({ email, password }) // add return here
       .then((res) => {
         if (res.token) {
           console.log("Login successful");
           setIsLoggedIn(true);
-
           localStorage.setItem("jwt", res.token);
-          console.log("Token: " + res.token);
-
           closeAllModals();
         } else {
           console.error("Login failed");

@@ -9,6 +9,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Header = ({ weatherData, handleAddItem, handleSignUp, handleLogin }) => {
   const currentUser = useContext(CurrentUserContext);
+
   const currentDateLong = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -18,8 +19,6 @@ const Header = ({ weatherData, handleAddItem, handleSignUp, handleLogin }) => {
     month: "short",
     day: "numeric",
   });
-
-  const username = "Terrence Tegegne";
 
   return (
     <header className="header">
@@ -45,9 +44,11 @@ const Header = ({ weatherData, handleAddItem, handleSignUp, handleLogin }) => {
                 className="header__avatar"
               />
             ) : (
-              <div className="header__avatar_placeholder">
-                {currentUser.name[0]}
-              </div>
+              currentUser.name && (
+                <div className="header__avatar_placeholder">
+                  {currentUser.name[0]}
+                </div>
+              )
             )}
           </Link>
         ) : (

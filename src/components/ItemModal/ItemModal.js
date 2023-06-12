@@ -35,7 +35,7 @@ const ItemModal = ({ clothingItem, close, deleteItem }) => {
             </p>
             <button
               className={itemDeleteButtonClassName}
-              onClick={() => deleteItem(clothingItem.id)}
+              onClick={() => deleteItem(clothingItem._id)}
             >
               Delete item
             </button>
