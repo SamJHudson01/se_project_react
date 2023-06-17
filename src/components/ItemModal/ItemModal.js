@@ -4,7 +4,11 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemModal = ({ clothingItem, close, deleteItem }) => {
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = clothingItem.owner._id === currentUser._id;
+  const isOwn =
+    clothingItem &&
+    clothingItem.owner &&
+    clothingItem.owner._id === currentUser._id;
+
   const itemDeleteButtonClassName = `item-modal__delete ${
     isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
   }`;
@@ -25,7 +29,8 @@ const ItemModal = ({ clothingItem, close, deleteItem }) => {
             className="item-modal__image"
             style={{
               backgroundImage: `url(${clothingItem.imageUrl})`,
-              backgroundSize: "cover",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
             }}
           ></div>
           <div className="item-modal__text-container">

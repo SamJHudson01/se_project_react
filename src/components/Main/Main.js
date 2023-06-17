@@ -13,8 +13,7 @@ const Main = ({
   handleLikeClick,
 }) => {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-  // const { clothingItems } = useContext(ClothingItemsContext);
-  const clothingItems = defaultClothingItems;
+  const { clothingItems } = useContext(ClothingItemsContext);
 
   const weatherType = () => {
     const temperature = temperatureF;

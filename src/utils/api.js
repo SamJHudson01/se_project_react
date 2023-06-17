@@ -10,7 +10,12 @@ function checkResponse(res) {
 }
 
 export const getItems = () => {
-  return fetch(`${baseUrl}/items`).then(checkResponse);
+  return fetch(`${baseUrl}/items`)
+    .then(checkResponse)
+    .then((items) => {
+      console.log(items);
+      return items;
+    });
 };
 
 export const addItem = (item, token) => {
@@ -35,7 +40,10 @@ export const deleteItem = (id, token) => {
 };
 
 export function updateUserProfile(userData, token) {
-  return fetch("/api/me", {
+  if (userData.avatar === "") {
+    userData.avatar = null;
+  }
+  return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -51,6 +59,7 @@ export function updateUserProfile(userData, token) {
 }
 
 export const addCardLike = (id, token) => {
+  console.log(id);
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
@@ -61,6 +70,7 @@ export const addCardLike = (id, token) => {
 };
 
 export const removeCardLike = (id, token) => {
+  console.log(id);
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {

@@ -41,7 +41,10 @@ function App() {
 
   useEffect(() => {
     getItems()
-      .then((data) => setClothingItems(data))
+      .then((data) => {
+        console.log("Items data:", data); // Log the data
+        setClothingItems(data);
+      })
       .catch((error) => {
         console.error(error);
       });
@@ -55,6 +58,8 @@ function App() {
   const handleSignOut = () => {
     localStorage.removeItem("jwt");
     setIsLoggedIn(false);
+    setToken(null);
+    setCurrentUser(null);
   };
 
   function handleToggleSwitchChange(event) {
@@ -111,43 +116,48 @@ function App() {
     }
   };
 
-  const handleLikeClick = (id, isLiked, user) => {
+  const handleLikeClick = (id, isLiked) => {
     const token = localStorage.getItem("jwt");
-    // Check if this card is now liked
-    isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-        addCardLike({ id, user }, token)
+    console.log(
+      "Before API call",
+      clothingItems.find((item) => item._id === id).likes
+    );
+    !isLiked
+      ? addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        removeCardLike({ id, user }, token)
+      : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
               cards.map((c) => (c._id === id ? updatedCard : c))
             );
           })
           .catch((err) => console.log(err));
+    console.log(
+      "After API call",
+      clothingItems.find((item) => item._id === id).likes
+    ); // add this line
+  };
+
+  const handleTokenCheck = (token) => {
+    checkToken(token).then((response) => {
+      if (!response.error) {
+        setToken(token);
+        setIsLoggedIn(true);
+        setCurrentUser(response);
+        console.log(currentUser);
+      }
+    });
   };
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
-
-    console.log("Token from local storage:", token); // Debug line
-
     if (token) {
-      checkToken(token).then((response) => {
-        if (response.error) {
-          console.error("Error validating token:", response.error);
-        } else {
-          setToken(token);
-          setIsLoggedIn(true);
-          setCurrentUser(response);
-        }
-      });
+      handleTokenCheck(token);
     }
   }, []);
 
@@ -186,31 +196,21 @@ function App() {
 
   const closeAllModals = () => {
     setActiveModal(null);
-    console.log(isLoggedIn);
   };
 
   const handleRegister = ({ name, avatar, email, password }) => {
     register({ name, avatar, email, password })
       .then((res) => {
         if (res.userId) {
-          console.log("Registration successful");
           return authorize({ email, password });
-          console.log(res);
-        } else {
-          console.error("Registration failed");
-          // display error to user
         }
       })
       .then((res) => {
         if (res.token) {
-          console.log("Login successful");
           localStorage.setItem("jwt", res.token);
-          console.log(res);
           setIsLoggedIn(true);
           closeAllModals();
-        } else {
-          console.error("Login failed");
-          // display error to user
+          handleTokenCheck(res.token);
         }
       })
       .catch((error) => {
@@ -219,16 +219,13 @@ function App() {
   };
 
   const handleLogin = ({ email, password }) => {
-    return authorize({ email, password }) // add return here
+    return authorize({ email, password })
       .then((res) => {
         if (res.token) {
-          console.log("Login successful");
           setIsLoggedIn(true);
           localStorage.setItem("jwt", res.token);
           closeAllModals();
-        } else {
-          console.error("Login failed");
-          // display error to user
+          handleTokenCheck(res.token);
         }
       })
       .catch((error) => {

@@ -15,7 +15,7 @@ const ClothesSection = ({
     : Array.from(clothingItems);
 
   const userClothingItems = items.filter(
-    (item) => item.owner._id === currentUser._id
+    (item) => item.owner === currentUser._id
   );
 
   return (
