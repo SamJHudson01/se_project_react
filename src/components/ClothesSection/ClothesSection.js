@@ -8,6 +8,7 @@ const ClothesSection = ({
   handleCardClick,
   handleAddItem,
   handleLikeClick,
+  handleDeleteClick,
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const items = Array.isArray(clothingItems)
@@ -32,7 +33,8 @@ const ClothesSection = ({
             key={item._id}
             clothingItem={item}
             handleCardClick={handleCardClick}
-            handleLikeClick={handleLikeClick} // make sure you pass the correct function
+            handleLikeClick={handleLikeClick}
+            handleDeleteClick={handleDeleteClick}
           />
         ))}
       </div>

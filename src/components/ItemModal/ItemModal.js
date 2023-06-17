@@ -7,7 +7,11 @@ const ItemModal = ({ clothingItem, close, deleteItem }) => {
   const isOwn =
     clothingItem &&
     clothingItem.owner &&
-    clothingItem.owner._id === currentUser._id;
+    currentUser &&
+    clothingItem.owner === currentUser._id;
+
+  console.log("clothingItem:", clothingItem);
+  console.log("isOwn:", isOwn);
 
   const itemDeleteButtonClassName = `item-modal__delete ${
     isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"

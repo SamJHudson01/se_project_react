@@ -42,7 +42,6 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
-        console.log("Items data:", data); // Log the data
         setClothingItems(data);
       })
       .catch((error) => {
@@ -104,8 +103,13 @@ function App() {
     if (token) {
       deleteItem(id, token)
         .then(() => {
-          const updatedItems = clothingItems.filter((item) => item.id !== id);
-          setClothingItems(updatedItems);
+          getItems()
+            .then((data) => {
+              setClothingItems(data);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
           closeAllModals();
         })
         .catch((error) => {
@@ -118,10 +122,6 @@ function App() {
 
   const handleLikeClick = (id, isLiked) => {
     const token = localStorage.getItem("jwt");
-    console.log(
-      "Before API call",
-      clothingItems.find((item) => item._id === id).likes
-    );
     !isLiked
       ? addCardLike(id, token)
           .then((updatedCard) => {
@@ -137,10 +137,6 @@ function App() {
             );
           })
           .catch((err) => console.log(err));
-    console.log(
-      "After API call",
-      clothingItems.find((item) => item._id === id).likes
-    ); // add this line
   };
 
   const handleTokenCheck = (token) => {
@@ -272,6 +268,8 @@ function App() {
                           handleCardClick={handleCardClick}
                           onSignOut={handleSignOut}
                           onEditProfile={() => setActiveModal("edit-profile")}
+                          handleAddItem={() => setActiveModal("add-item")}
+                          handleDeleteClick={handleDeleteItem}
                         />
                       </ProtectedRoute>
                     }
