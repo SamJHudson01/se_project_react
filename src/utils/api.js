@@ -1,6 +1,6 @@
-const baseUrl =
-  // "https://my-json-server.typicode.com/SamJHudson01/se_project_react";
-  "http://localhost:3001";
+const baseUrl = process.env.NODE_ENV === 'production' 
+  ? 'api.wtwr.samoobrona.one.pl'
+  : 'http://localhost:3001';
 
 function checkResponse(res) {
   if (res.ok) {
