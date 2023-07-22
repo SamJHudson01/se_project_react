@@ -1,6 +1,7 @@
-const baseUrl = process.env.NODE_ENV === 'production' 
-  ? 'https://api.wtwr.samoobrona.one.pl'
-  : 'http://localhost:3001';
+const baseUrl =
+  process.env.NODE_ENV === 'production' ?
+    'https://api.wtwr.samoobrona.one.pl'
+    : 'https://localhost:3001';
 
 function checkResponse(res) {
   if (res.ok) {
@@ -13,6 +14,7 @@ export const getItems = () => {
   return fetch(`${baseUrl}/items`)
     .then(checkResponse)
     .then((items) => {
+      console.log(process.env.NODE_ENV)
       console.log(items);
       return items;
     });

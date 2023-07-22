@@ -1,6 +1,6 @@
 const baseUrl = process.env.NODE_ENV === 'production' 
   ? 'https://api.wtwr.samoobrona.one.pl'
-  : 'http://localhost:3001';
+  : 'https://localhost:3001';
 
 function checkResponse(res) {
   if (res.ok) {
