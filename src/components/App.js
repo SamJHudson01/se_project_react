@@ -27,7 +27,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import LoginModal from "./LoginModal/LoginModal";
 import RegisterModal from "./RegisterModal/RegisterModal";
 import EditProfileModal from "./EditProfileModal/EditProfileModal";
-import { testUser } from "../utils/TestUser";
+
 
 function App() {
   const [weatherData, setWeatherData] = useState({});
@@ -38,7 +38,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+ 
 
   useEffect(() => {
     getItems()

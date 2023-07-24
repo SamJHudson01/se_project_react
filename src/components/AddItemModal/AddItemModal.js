@@ -13,9 +13,6 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
     setWeather("");
   }, [isOpen]);
 
-  const handleNameChange = (e) => setName(e.target.value);
-  const handleImageUrlChange = (e) => setImageUrl(e.target.value);
-  const handleWeatherChange = (e) => setWeather(e.target.value);
 
   function handleSubmit(e) {
     e.preventDefault();
